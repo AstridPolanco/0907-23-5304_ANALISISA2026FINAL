@@ -1,0 +1,133 @@
+================================================================
+        INFORME DE USO DE INTELIGENCIA ARTIFICIAL
+
+
+1. HERRAMIENTA DE IA UTILIZADA
+----------------------------------------------------------------
+Herramienta : Claude (Anthropic)
+Plataforma  : https://claude.ai
+Modelo      : Claude Sonnet 4.6
+
+
+2. PROMPTS ENVIADOS
+----------------------------------------------------------------
+
+PROMPT 1:
+"Ayúdame a realizar mi examen de Análisis de Sistemas I.
+Necesito crear una API REST en C# con SQLite para una empresa
+de logística llamada Envíos Rápidos GT. Debe incluir historias
+de usuario, endpoints, pruebas unitarias con xUnit y estar
+lista para desplegar en Render.com. Las historias de usuario
+deben ir en el README del repositorio."
+
+Resultado: La IA generó la estructura completa del proyecto
+incluyendo modelos, servicios, controladores, pruebas y README.
+
+----------------------------------------------------------------
+
+PROMPT 2:
+"Las historias de usuario deben seguir el formato RF-XX con:
+tipo de requerimiento, descripción general, historia de usuario,
+criterios de aceptación de backend y frontend, y reglas de
+negocio para backend y frontend."
+
+Resultado: La IA reescribió las 10 historias de usuario en el
+formato solicitado con criterios Dado/Cuando/Entonces para
+cada sección de backend y frontend.
+
+----------------------------------------------------------------
+
+PROMPT 3 (corrección de error):
+"El proyecto falla porque tengo .NET 9 instalado y el proyecto
+fue creado para .NET 8."
+
+Resultado: La IA identificó que había que cambiar el
+TargetFramework de net8.0 a net9.0 en ambos archivos .csproj
+y actualizar los paquetes NuGet de versión 8.0.0 a 9.0.0.
+También actualizar el Dockerfile para usar las imágenes de
+.NET 9.
+
+----------------------------------------------------------------
+
+PROMPT 4 (corrección de error):
+"dotnet test falla con 44 errores: El nombre del tipo
+'FactAttribute' no se encontró."
+
+Resultado: La IA identificó que faltaba la directiva
+"using Xunit;" al inicio del archivo EnvioServiceTests.cs.
+Generó el archivo corregido para descarga directa.
+
+----------------------------------------------------------------
+
+PROMPT 5:
+"¿Cómo pruebo el proyecto localmente y cómo lo subo a Render?"
+
+Resultado: La IA explicó paso a paso cómo ejecutar dotnet run,
+abrir Swagger en localhost, correr dotnet test, crear el
+repositorio en GitHub con el nombre correcto y configurar
+el Web Service en Render.com con Docker.
+
+----------------------------------------------------------------
+
+PROMPT 6:
+"git push falla con 'fetch first' porque GitHub creó el
+repositorio con un README automático."
+
+Resultado: La IA indicó usar git push --force para sobreescribir
+el contenido remoto con el código local.
+
+
+3. REFLEXIÓN SOBRE EL USO DE LA IA
+----------------------------------------------------------------
+La inteligencia artificial fue utilizada como herramienta de
+apoyo al desarrollo, no como sustituto del análisis propio.
+
+El proceso de trabajo fue el siguiente:
+
+a) ANÁLISIS PROPIO PREVIO:
+   Antes de escribir cualquier prompt, se leyó y analizó el
+   cuadernillo del examen para identificar los requisitos de
+   negocio: las reglas de tarifas por peso, el flujo de estados
+   unidireccional, el límite de 3 intentos de entrega, el
+   descuento por NIT y la estructura del código de rastreo.
+
+b) USO DE IA PARA ACELERAR EL DESARROLLO:
+   Con los requisitos claros, se usó la IA para generar el
+   código base de la API en C# con la arquitectura en capas
+   (Controllers → Services → Data), lo cual habría tomado
+   varias horas hacerlo manualmente desde cero.
+
+c) CORRECCIONES IDENTIFICADAS Y APLICADAS:
+   - La versión de .NET debió ajustarse de 8 a 9 según el
+     entorno disponible en la máquina local.
+   - El archivo de pruebas omitió el "using Xunit;" que es
+     necesario para que los atributos [Fact] y [Theory] sean
+     reconocidos por el compilador.
+   - El push inicial a GitHub falló porque el repositorio fue
+     creado con un README automático, requiriendo --force.
+
+d) VALIDACIÓN PROPIA:
+   Cada historia de usuario fue revisada contra la rúbrica del
+   examen para verificar que cubría los criterios de: formato,
+   criterios medibles y cobertura de todos los requerimientos.
+   Se verificó que los 7 endpoints cubrían todos los flujos
+   descritos en el cuadernillo.
+
+
+4. APRENDIZAJES OBTENIDOS
+----------------------------------------------------------------
+- El diseño de APIs REST requiere pensar en los casos borde:
+  transiciones de estado inválidas, datos faltantes, división
+  por cero en reportes cuando no hay datos.
+
+- Las pruebas unitarias con base de datos en memoria (InMemory)
+  permiten probar la lógica de negocio de forma aislada sin
+  necesitar una base de datos real instalada.
+
+- Render.com con Docker simplifica significativamente el
+  despliegue de aplicaciones .NET sin necesidad de configurar
+  un servidor manualmente.
+
+- El uso responsable de IA implica entender el código generado,
+  no solo copiarlo. Cada corrección de error requirió
+  comprender qué estaba fallando y por qué.
