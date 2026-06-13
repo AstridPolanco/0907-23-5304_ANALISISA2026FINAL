@@ -7,7 +7,7 @@ Facultad de Ingeniería | Análisis de Sistemas I — Examen Final
 
 Catedrático: Ing. Marco Tulio Valdez | Fecha: 13/Jun/2026
 Astrid Mileidy Peña Polanco 0907-23-5304
-
+Link a Render: https://zero907-23-5304-analisisa2026final.onrender.com
 
 Descripción del Proyecto
 
